@@ -10,6 +10,7 @@ class UserController extends Controller
 {
     $credentials = $request->only('username', 'password');
 
+    // meantime credentials kasi wala pa tayong database
     $validUser = [
         'username' => 'admin',
         'password' => '123456'
@@ -17,7 +18,6 @@ class UserController extends Controller
 
 
     if (
-        // meantime credentials kasi wala pa tayong database
         $credentials['username'] === $validUser['username'] &&
         $credentials['password'] === $validUser['password']
     ) {
