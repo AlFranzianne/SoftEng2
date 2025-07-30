@@ -14,7 +14,7 @@
             <p class="text-sm text-red-600 text-center mb-4">{{ session('error') }}</p>
         @endif
 
-        <form action="/login" method="POST" class="space-y-4">
+        <form action="/projectdashboard" method="POST" class="space-y-4">
             @csrf
             <input
                 name="username"
