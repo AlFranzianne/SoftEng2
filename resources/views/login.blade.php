@@ -8,10 +8,6 @@
 </head>
 <body class="min-h-screen flex items-center justify-center bg-white font-sans">
     <div class="w-full max-w-sm p-8 border-2 border-red-700 rounded-lg shadow-lg bg-white">
-        <div class="flex justify-center mb-6">
-            <img src="https://oso-link.com/wp-content/uploads/2022/07/Logo_OSOLink.png" alt="OSOLink Logo" class="w-24">
-        </div>
-
         <h2 class="text-center text-2xl font-bold text-red-700 mb-6">Login</h2>
 
         @if(session('error'))
