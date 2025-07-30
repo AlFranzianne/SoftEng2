@@ -3,28 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function login(Request $request)
-{
-    $credentials = $request->only('username', 'password');
+    {
+        $credentials = $request->only('username', 'password');
 
-    // meantime credentials kasi wala pa tayong database
-    $validUser = [
-        'username' => 'admin',
-        'password' => '123456'
-    ];
+        $admin = Admin::where('username', $credentials['username'])->first();
 
+        if ($admin && Hash::check($credentials['password'], $admin->password)) {
+            return "Welcome, {$admin->username}!";
+        }
 
-    if (
-        $credentials['username'] === $validUser['username'] &&
-        $credentials['password'] === $validUser['password']
-    ) {
-        return "Welcome, {$credentials['username']}!";
+        return redirect('/')->with('error', 'Invalid username or password.');
     }
-
-    return redirect('/')->with('error', 'Invalid username or password.');
-}
-
 }
